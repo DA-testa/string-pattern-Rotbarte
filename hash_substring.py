@@ -19,7 +19,7 @@ def print_occurrences(output):
     print(' '.join(map(str, output)))
 
 def get_occurrences(pattern, text):
-    count = []
+    occurrences = []
     patternLength = len(pattern)
     
     prime = 10**9+7
@@ -37,9 +37,9 @@ def get_occurrences(pattern, text):
     for i in range(1, len(text) - patternLength + 1):
         textHashVal = (d*(textHashVal-ord(text[i-1])*h) + ord(text[i+patternLength-1])) % prime
         if patternHashVal == textHashVal and pattern == text[i:i+patternLength]:
-            count.append(i)
+            occurrences.append(i)
 
-    return count
+    return occurrences
 
 if __name__ == '__main__':
     print_occurrences(get_occurrences(*read_input()))
