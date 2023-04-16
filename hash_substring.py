@@ -32,7 +32,7 @@ def get_occurrences(pattern, text):
         textHashVal = (textHashVal*d + ord(text[i])) % prime
 
     if patternHashVal == textHashVal and pattern == text[:patternLength]:
-        count.append(0)
+        occurrences.append(0)
 
     for i in range(1, len(text) - patternLength + 1):
         textHashVal = (d*(textHashVal-ord(text[i-1])*h) + ord(text[i+patternLength-1])) % prime
