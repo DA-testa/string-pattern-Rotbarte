@@ -7,10 +7,10 @@ def read_input():
         pattern = input()
         text = input()
     if "F" in example:
-        folder = "tests/06"
-        with open(folder, "r") as files:
-            pattern = files.readline()
-            text = files.readline()
+        folder = "./tests/" + "06"
+        with open(folder, "r") as file:
+            pattern = file.readline().rstrip()
+            text = file.readline().rstrip()
     
     return (pattern.rstrip(), text.rstrip())
     # after input type choice
