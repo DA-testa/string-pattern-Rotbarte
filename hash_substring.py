@@ -18,25 +18,26 @@ def print_occurrences(output):
     
     print(' '.join(map(str, output)))
 
-def hash_func(s, z=10**9 + 7, x=263):
-    y= 0
-    for c in reversed(s):
-        y= (y * x + ord(c)) % z
-    return y
-
 def get_occurrences(pattern, text):
+   
     prime = 10**9 + 7
     x = 263
     pattern_len = len(pattern)
     text_len = len(text)
-    pattern_hash = hash_func(pattern)
-    text_hashes = [hash_func(text[i:i+pattern_len]) for i in range(text_len-pattern_len+1)]
-    occurrences = []
-    for i in range(text_len-pattern_len+1):
-        if pattern_hash == text_hashes[i]:
-            if pattern == text[i:i+pattern_len]:
-                occurrences.append(i)
-    return occurances
+    pattern_hash = 0
+    text_hashes = []
+    h = 1
+    for i in range(pattern_len):
+        pattern_hash = (pattern_hash * x + ord(pattern[i])) % prime
+        h = (h * x) % prime
+    for i in range(text_len - pattern_len + 1):
+        text_hash = 0
+        for j in range(pattern_len):
+            text_hash = (text_hash * x + ord(text[i+j])) % prime
+        if text_hash == pattern_hash and text[i:i+pattern_len] == pattern:
+            occurrences.append(i)
+    return occurrences
+
 
 
 if __name__ == '__main__':
