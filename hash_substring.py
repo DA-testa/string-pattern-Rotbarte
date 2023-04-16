@@ -13,7 +13,7 @@ def read_input():
       return pattern, text
     
     
-    return (input().rstrip(), input().rstrip())
+    return (pattern.rstrip(), text.rstrip())
 
 def hash_func(s, prime, x):
     h = 0
