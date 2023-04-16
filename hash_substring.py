@@ -2,11 +2,11 @@ import os
 
 def read_input():
     example=input().rstrip()
-    if check=="I"
+    if check=="I":
       pattern=input().rstrip()
       text=input().rstrip()
       return pattern, text
-    if check=="F"
+    if check=="F":
       path = os.getcwd()
       os.chdir(path) 
       file_path = f"{path}/tests/06"
