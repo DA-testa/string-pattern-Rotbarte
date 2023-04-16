@@ -23,8 +23,8 @@ def get_occurrences(pattern, text):
     lenpattern = len(pattern)
     
     prime = 10**9+7
-    d = 256
-    h = pow(d, lenpattern-1, prime)
+    x = 256
+    y = pow(d, lenpattern-1, prime)
     pattern2 = 0
     text2 = 0
     for i in range(lenpattern):
