@@ -26,7 +26,6 @@ def hash_func(s, prime=10**9 + 7, x=263):
     return y
 
 def get_occurrences(pattern, text):
-   def get_occurrences(pattern, text):
     pattern_len = len(pattern)
     text_len = len(text)
     pattern_hash = hash_func(pattern)
