@@ -21,16 +21,22 @@ def print_occurrences(output):
 def get_occurrences(pattern, text):
     count = []
     patternLength = len(pattern)
+    B = 263
+    Q = 1000000007
     
-    patternHashVal = hash_func(pattern)
-    textHashVals = [hash_func(text[i:i+patternLength]) for i in range(len(text)-patternLength+1)]
+    patternHashVal = sum(ord(pattern[i]) * pow(B, patternLength - i - 1) for i in range(patternLength)) % Q
+    textHashVal = sum(ord(text[i]) * pow(B, patternLength - i - 1) for i in range(patternLength)) % Q
+    
+    if patternHashVal == textHashVal and pattern == text[:patternLength]:
+        count.append(0)
 
-    for i, hashVal in enumerate(textHashVals):
-        if patternHashVal == hashVal and pattern == text[i:i+patternLength]:
+    for i in range(1, len(text) - patternLength + 1):
+        textHashVal = (textHashVal - ord(text[i - 1]) * pow(B, patternLength - 1)) % Q
+        textHashVal = (textHashVal * B + ord(text[i + patternLength - 1])) % Q
+        if patternHashVal == textHashVal and pattern == text[i:i+patternLength]:
             count.append(i)
 
     return count
-
 
 if __name__ == '__main__':
     print_occurrences(get_occurrences(*read_input()))
