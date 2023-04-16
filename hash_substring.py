@@ -1,17 +1,16 @@
 # python3
 
 def read_input():
-   example=input().rstrip()
-   if check=="I"
-    pattern=input().rstrip()
-    text=input().rstrip()
-    return pattern, text
-
-   if check=="F"
-    path = os.getcwd()
-        os.chdir(path) 
-        file_path = f"{path}/tests/06"
-        return pattern, text
+    example=input().rstrip()
+    if check=="I"
+      pattern=input().rstrip()
+      text=input().rstrip()
+      return pattern, text
+    if check=="F"
+      path = os.getcwd()
+      os.chdir(path) 
+      file_path = f"{path}/tests/06"
+      return pattern, text
     
     
     return (input().rstrip(), input().rstrip())
