@@ -1,4 +1,4 @@
-# python3
+import os
 
 def read_input():
     example=input().rstrip()
