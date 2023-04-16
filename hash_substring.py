@@ -18,10 +18,10 @@ def print_occurrences(output):
     
     print(' '.join(map(str, output)))
 
-def hash_func(s, prime=10**9 + 7, x=263):
+def hash_func(s, z=10**9 + 7, x=263):
     y= 0
     for c in reversed(s):
-        y= (y * x + ord(c)) % prime
+        y= (y * x + ord(c)) % z
     return y
 
 def get_occurrences(pattern, text):
