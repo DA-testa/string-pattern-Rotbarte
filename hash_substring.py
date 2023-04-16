@@ -1,17 +1,15 @@
 import os
 
 def read_input():
-    example=input().rstrip()
-    if check=="I":
-      pattern=input().rstrip()
-      text=input().rstrip()
-      return pattern, text
-    if check=="F":
-      path = os.getcwd()
-      os.chdir(path) 
-      file_path = f"{path}/tests/06"
-      return pattern, text
-    
+    choice = input()
+    if "I" in choice:
+        pattern = input()
+        text = input()
+    else:
+        folder = "tests/06"
+        with open(folder, "r") as files:
+            pattern = files.readline()
+            text = files.readline()
     
     return (pattern.rstrip(), text.rstrip())
 
