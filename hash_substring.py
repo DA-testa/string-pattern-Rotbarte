@@ -29,7 +29,11 @@ def get_occurrences(pattern, text):
     text_len = len(text)
     pattern_hash = hash_func(pattern)
     text_hashes = [hash_func(text[i:i+pattern_len]) for i in range(text_len-pattern_len+1)]
-    occurances= [i for i in range(text_len-pattern_len+1) if text_hashes[i] == pattern_hash]
+    occurrences = []
+    for i in range(text_len-pattern_len+1):
+        if p_hash == text_hashes[i]:
+            if pattern == text[i:i+pattern_len]:
+                occurrences.append(i)
     return occurances
 
 
