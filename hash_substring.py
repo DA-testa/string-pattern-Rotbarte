@@ -22,11 +22,21 @@ def get_occurrences(pattern, text):
     count = []
     patternLength = len(pattern)
     
-    patternHashVal = hash_func(pattern)
-    textHashVals = [hash_func(text[i:i+patternLength]) for i in range(len(text)-patternLength+1)]
+    prime = 10**9+7
+    d = 256
+    h = pow(d, patternLength-1, prime)
+    patternHashVal = 0
+    textHashVal = 0
+    for i in range(patternLength):
+        patternHashVal = (patternHashVal*d + ord(pattern[i])) % prime
+        textHashVal = (textHashVal*d + ord(text[i])) % prime
 
-    for i, hashVal in enumerate(textHashVals):
-        if patternHashVal == hashVal and pattern == text[i:i+patternLength]:
+    if patternHashVal == textHashVal and pattern == text[:patternLength]:
+        count.append(0)
+
+    for i in range(1, len(text) - patternLength + 1):
+        textHashVal = (d*(textHashVal-ord(text[i-1])*h) + ord(text[i+patternLength-1])) % prime
+        if patternHashVal == textHashVal and pattern == text[i:i+patternLength]:
             count.append(i)
 
     return count
