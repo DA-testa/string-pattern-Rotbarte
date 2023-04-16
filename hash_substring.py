@@ -28,14 +28,14 @@ def get_occurrences(pattern, text):
     pattern2 = 0
     text2 = 0
     for i in range(lenpattern):
-        pattern2 = (pattern2*d + ord(pattern[i])) % prime
-        text2 = (text2*d + ord(text[i])) % prime
+        pattern2 = (pattern2*x + ord(pattern[i])) % prime
+        text2 = (text2*x + ord(text[i])) % prime
 
     if pattern2 == text2 and pattern == text[:lenpattern]:
         occurrences.append(0)
 
     for i in range(1, len(text) - lenpattern + 1):
-        text2 = (d*(text2-ord(text[i-1])*h) + ord(text[i+lenpattern-1])) % prime
+        text2 = (x*(text2-ord(text[i-1])*y) + ord(text[i+lenpattern-1])) % prime
         if pattern2 == text2 and pattern == text[i:i+lenpattern]:
             occurrences.append(i)
 
