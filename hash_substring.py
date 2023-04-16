@@ -18,21 +18,18 @@ def print_occurrences(output):
     
     print(' '.join(map(str, output)))
 
-def hash_func(s, z=10**9 + 7, x=263):
-    y= 0
-    for c in reversed(s):
-        y= (y * x + ord(c)) % z
-    return y
+def get_occurrences(pattern, text):
+    count = []
+    patternLength = len(pattern)
+    
+    patternHashVal = hash_func(pattern)
+    textHashVals = [hash_func(text[i:i+patternLength]) for i in range(len(text)-patternLength+1)]
 
+    for i, hashVal in enumerate(textHashVals):
+        if patternHashVal == hashVal and pattern == text[i:i+patternLength]:
+            count.append(i)
 
-def get_occurrences(pattern, text, z=10**9 + 7, x=263):
-    pattern_len = len(pattern)
-    text_len = len(text)
-    pattern_hash = hash_func(pattern, z, x)
-    text_hashes = [hash_func(text[i:i+pattern_len], z, x) for i in range(text_len-pattern_len+1)]
-    occurrences = [i for i in range(text_len-pattern_len+1) if text_hashes[i] == pattern_hash]
-    return occurrences
-
+    return count
 
 
 if __name__ == '__main__':
