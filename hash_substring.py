@@ -35,7 +35,7 @@ def get_occurrences(pattern, text):
         occurrences.append(0)
 
     for i in range(1, len(text) - lenpattern + 1):
-        text2 = (x*(text2-ord(text[i-1])*y) + ord(text[i+lenpattern-1])) % prime
+        text2 = ((text2-ord(text[i-1])*y)*x + ord(text[i+lenpattern-1])) % prime
         if pattern2 == text2 and pattern == text[i:i+lenpattern]:
             occurrences.append(i)
 
